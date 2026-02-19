@@ -1,11 +1,12 @@
 -- =============================================
 -- Retail Analytics Data Warehouse
 -- Star Schema - Dimension Tables
+-- SQL Server / T-SQL Implementation
 -- =============================================
 
 -- Calendar Dimension
 CREATE TABLE dim_calendar (
-    calendar_key INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    calendar_key INT PRIMARY KEY IDENTITY(1,1),
     full_date DATE NOT NULL UNIQUE,
     year INT NOT NULL,
     quarter INT CHECK (quarter BETWEEN 1 AND 4),
@@ -17,7 +18,7 @@ CREATE TABLE dim_calendar (
 
 -- Store Dimension
 CREATE TABLE dim_store (
-    store_key INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    store_key INT PRIMARY KEY IDENTITY(1,1),
     store_name VARCHAR(100) NOT NULL,
     store_type VARCHAR(50),
     region VARCHAR(50),
@@ -29,7 +30,7 @@ CREATE TABLE dim_store (
 
 -- Product Dimension
 CREATE TABLE dim_product (
-    product_key INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    product_key INT PRIMARY KEY IDENTITY(1,1),
     product_name VARCHAR(200) NOT NULL,
     brand VARCHAR(100),
     category VARCHAR(100),
@@ -39,7 +40,7 @@ CREATE TABLE dim_product (
 
 -- Customer Dimension
 CREATE TABLE dim_customer (
-    customer_key INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    customer_key INT PRIMARY KEY IDENTITY(1,1),
     first_name VARCHAR(100),
     last_name VARCHAR(100),
     gender CHAR(1),
